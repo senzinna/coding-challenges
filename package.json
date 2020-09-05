@@ -1,0 +1,19 @@
+{
+  "name": "example-typescript",
+  "version": "1.0.0",
+  "description": "a typescript example",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "tsc": "npm run cleanDir && tsc -w",
+    "cleanDir": "if exist tmp rd /s /q tmp"
+  },
+  "dependencies": {
+    "typescript": "3.9.7"
+  },
+  "devDependencies": {
+    "@types/node": "14.6.0",
+    "ts-node": "9.0.0",
+    "tslint": "6.1.3"
+  }
+}

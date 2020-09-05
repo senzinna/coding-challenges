@@ -1,9 +1,5 @@
 {
-    "cSpell.ignoreWords": [
-        "defang",
-        "defang i paddr",
-        "i",
-        "nums",
-        "paddr"
-    ]
+    "files.exclude": {
+        "tmp/": true
+    }
 }
