@@ -1,12 +1,24 @@
 function groupThePeople(groupSizes: number[]): number[][] {
-    const groups = groupSizes.reduce((accumulator, personSize, index) => {
-        const currentGroup: Array<number> = accumulator[personSize] || new Array<number>();
+    const groups = new Map<number, number[]>();
+    const result: number[][] = [];
 
-        currentGroup.push(index);
-        accumulator[personSize] = currentGroup;
+    groupSizes.forEach((member, id) => {
+        let members = groups.get(member) ?? [];
+        members.push(id);
 
-        return accumulator;
-    }, {})
+        if (members.length === member) {
+            result.push(members);
+            members = [];
+        }
 
-    return Object.keys(groups).map(key => groups[key])
-};
+        groups.set(member, members);
+    });
+
+    return result;
+}
+
+export function run(): void {
+    const input = [3, 3, 3, 3, 3, 1, 3];
+    const output = groupThePeople(input);
+    console.log(JSON.stringify(output));
+}
