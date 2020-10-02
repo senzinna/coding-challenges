@@ -1,4 +1,4 @@
-import { run } from "./LeetCode/1282";
+import { run } from "./LeetCode/11";
 
 
 run();
