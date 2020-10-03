@@ -1,24 +1,23 @@
 function maxArea(height: number[]): number {
-    let left = 0;
-    let right = 1;
-    height.forEach((point, index, array) => {
-        const volume = (right - left) * (Math.min(height[left], array[right]));
-        const potentialVolume = (index - left) * (Math.min(array[left], point));
-        if (potentialVolume > volume) {
-            right = index;
-        }
+    let left: number = 0;
+    let right: number = height.length - 1;
+    let largestArea = 0;
 
-        if (point > array[left]) {
-            if (index !== right) {
-                left = index;
-            } else if (index < array.length) {
-                left = index;
-                right = right + 1;
-            }
-        }
-    });
+    while (left < right) {
+        const leftHeight = height[left];
+        const rightHeight = height[right];
+        const area = (right - left) * Math.min(leftHeight, rightHeight);
 
-    return (right - left) * (Math.min(height[left], height[right]));
+        largestArea = Math.max(largestArea, area);
+
+        if (leftHeight < rightHeight) {
+            left += 1;
+        } else {
+            right -= 1;
+        }
+    }
+
+    return largestArea;
 }
 
 export function run(): void {
